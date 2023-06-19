@@ -32,13 +32,14 @@ def main():
         prompt = '''Przetłumacz to z Języka Niemieckiego na Język Polski'''
         response = get_completion(prompt, line)
         text = response[0]
+        price = int(response[1])
 
         prompt = '''Zrób z tego dobry tytuł oferty na Allegro.'''
         response = get_completion(prompt, text)
         save_data(response[0])
 
         print("text: " +(str(response[0])))
-        print("price: "+str(response[1]))
+        print("price: "+str(price+int(response[1])))
         print("========================================")
         time.sleep(5)
 
