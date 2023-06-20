@@ -5,8 +5,8 @@ def load_data():
         lines = f.readlines()
     return lines
 
-def save_data(text):
-    with open("output.txt", 'a', encoding="UTF-8") as f:
+def save_data(text, filename):
+    with open(filename, 'a', encoding="UTF-8") as f:
         f.writelines(text + "\n")
 
 
@@ -33,10 +33,11 @@ def main():
         response = get_completion(prompt, line)
         text = response[0]
         price = int(response[1])
+        save_data("prompt-1.txt",response[0])
 
         prompt = '''Zrób z tego dobry tytuł oferty na Allegro.'''
         response = get_completion(prompt, text)
-        save_data(response[0])
+        save_data("prompt-2.txt",response[0])
 
         print("text: " +(str(response[0])))
         print("price: "+str(price+int(response[1])))
